@@ -27,16 +27,13 @@ import io.fabric8.groups.NodeState;
 import io.fabric8.groups.internal.TrackingZooKeeperGroup;
 import io.fabric8.insight.metrics.model.*;
 import io.fabric8.insight.metrics.service.support.JmxUtils;
-import io.fabric8.service.LocalJMXConnector;
 import org.apache.felix.scr.annotations.*;
 import org.apache.karaf.jaas.boot.principal.RolePrincipal;
 import org.osgi.framework.BundleContext;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import javax.management.JMException;
 import javax.management.MBeanServer;
-import javax.management.MBeanServerConnection;
 import javax.management.ObjectName;
 import javax.security.auth.Subject;
 import java.io.IOException;

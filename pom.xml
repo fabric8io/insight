@@ -21,7 +21,7 @@
 
   <groupId>io.fabric8.insight</groupId>
   <artifactId>insight-project</artifactId>
-  <version>1.2.0-SNAPSHOT</version>
+  <version>2.0-SNAPSHOT</version>
   <packaging>pom</packaging>
 
   <name>Fabric8 :: Insight</name>
@@ -37,6 +37,8 @@
     <jackson-version>2.4.1</jackson-version>
     <karaf-version>2.4.1</karaf-version>
     <junit-version>4.1.2</junit-version>
+    <elasticsearch-version>1.4.2</elasticsearch-version>
+    <slf-api-version>1.7.5</slf-api-version>
 
     <osgi-cm-version>4.3.1</osgi-cm-version>
     <osgi-version>5.0.0</osgi-version>
@@ -47,21 +49,20 @@
   <modules>
     <module>insight-storage</module>
     <module>insight-camel</module>
+    <module>insight-elasticsearch-log-storage</module>
+    <module>insight-elasticsearch-metrics-storage</module>
+    <module>insight-elasticsearch-factory</module>
+    <module>insight-elasticsearch-plugin</module>
+    <module>insight-metrics-mvel</module>
+    <module>insight-metrics-model</module>
     <!--module>insight-activemq</module>
+    <module>insight-metrics</module>
     <module>insight-jetty</module>
     <module>insight-log-core</module>
     <module>insight-log</module>
-    <module>insight-log-storage</module>
     <module>insight-log4j</module>
-    <module>insight-metrics</module>
-    <module>insight-metrics-model</module>
-    <module>insight-metrics-mvel</module>
     <module>insight-rhq-metrics</module>
-    <module>insight-influxdb-metrics</module>
-    <module>insight-elasticsearch-factory</module>
-    <module>insight-elasticsearch-plugin</module>
-    <module>insight-elasticsearch-log-storage</module>
-    <module>insight-elasticsearch-metrics-storage</module-->
+    <module>insight-influxdb-metrics</module-->
   </modules>
 
   <dependencies>
@@ -132,6 +133,12 @@
         <groupId>org.apache.karaf.shell</groupId>
         <artifactId>org.apache.karaf.shell.console</artifactId>
         <version>${karaf-version}</version>
+        <scope>provided</scope>
+      </dependency>
+      <dependency>
+        <groupId>org.slf4j</groupId>
+        <artifactId>slf4j-api</artifactId>
+        <version>${slf-api-version}</version>
         <scope>provided</scope>
       </dependency>
     </dependencies>
