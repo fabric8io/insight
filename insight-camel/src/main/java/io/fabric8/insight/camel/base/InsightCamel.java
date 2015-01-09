@@ -18,16 +18,11 @@ package io.fabric8.insight.camel.base;
 import io.fabric8.api.scr.ValidatingReference;
 import io.fabric8.insight.camel.audit.Auditor;
 import io.fabric8.insight.camel.breadcrumb.Breadcrumbs;
-import io.fabric8.insight.camel.commands.AuditorCommand;
-import io.fabric8.insight.camel.commands.BreadcrumbsCommand;
-import io.fabric8.insight.camel.commands.ProfilerCommand;
-import io.fabric8.insight.camel.commands.TracerCommand;
 import io.fabric8.insight.camel.profiler.Profiler;
 import io.fabric8.insight.camel.trace.Tracer;
 import io.fabric8.insight.storage.StorageService;
 import org.apache.camel.CamelContext;
 import org.apache.camel.spi.Container;
-import org.apache.felix.gogo.commands.basic.SimpleCommand;
 import org.apache.felix.scr.annotations.*;
 import org.osgi.framework.BundleContext;
 import org.osgi.framework.ServiceRegistration;
@@ -38,7 +33,6 @@ import org.slf4j.LoggerFactory;
 import javax.management.MBeanServer;
 import javax.management.MalformedObjectNameException;
 import javax.management.ObjectName;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -90,17 +84,6 @@ public class InsightCamel implements Container {
             }
         }
         Container.Instance.set(this);
-
-        try {
-
-            commandRegistrations = Arrays.asList(
-                    SimpleCommand.export(bundleContext, AuditorCommand.class),
-                    SimpleCommand.export(bundleContext, BreadcrumbsCommand.class),
-                    SimpleCommand.export(bundleContext, ProfilerCommand.class),
-                    SimpleCommand.export(bundleContext, TracerCommand.class));
-        } catch (Exception e) {
-            LOG.debug("Not registering commands - probably not running in Karaf runtime");
-        }
 
         modified(configuration);
     }
